@@ -8,7 +8,7 @@ import com.interventure.tender.service.exception.EntityNotFoundException;
 import java.util.List;
 
 public interface OfferService {
-    Offer addOffer(OfferCreationModel offerCreationModel);
+    OfferDto addOffer(OfferCreationModel offerCreationModel);
 
     boolean acceptOffer(Long offerId) throws BusinessException;
 

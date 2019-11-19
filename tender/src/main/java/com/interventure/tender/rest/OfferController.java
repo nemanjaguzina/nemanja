@@ -1,10 +1,9 @@
 package com.interventure.tender.rest;
 
+import com.interventure.tender.service.OfferCreationModel;
 import com.interventure.tender.service.OfferService;
 import com.interventure.tender.service.dto.OfferDto;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +25,13 @@ public class OfferController {
     @RequestMapping("/{tenderId}/{userId}")
     public List<OfferDto> getAllUserTenderOffers(@PathVariable("tenderId") Long tenderId, @PathVariable("userId") Long userId) {
         return offerService.getUserOffersForTender(userId, tenderId);
+    }
+
+    @RequestMapping(value = "/{tenderId}/{userId}/new", method = RequestMethod.POST)
+    public OfferDto submitOffer(@PathVariable("tenderId") Long tenderId, @PathVariable("userId") Long userId, @RequestBody OfferCreationModel offerCreationModel) {
+        offerCreationModel.setBidderId(userId);
+        offerCreationModel.setTenderId(tenderId);
+        return offerService.addOffer(offerCreationModel);
     }
 
 }

@@ -34,7 +34,7 @@ public class OfferTest {
         offerCreationModel.setAmount(BigDecimal.TEN);
         offerCreationModel.setCurrency("EUR");
         offerCreationModel.setBidderId(1L);
-        Offer offer = offerService.addOffer(offerCreationModel);
+        OfferDto offer = offerService.addOffer(offerCreationModel);
 
         Assert.assertNotNull(offer);
     }

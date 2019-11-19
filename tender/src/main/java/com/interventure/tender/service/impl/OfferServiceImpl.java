@@ -1,5 +1,6 @@
 package com.interventure.tender.service.impl;
 
+import com.interventure.tender.entity.ApplicationUser;
 import com.interventure.tender.entity.Offer;
 import com.interventure.tender.entity.OfferStatus;
 import com.interventure.tender.entity.Tender;
@@ -9,6 +10,7 @@ import com.interventure.tender.service.dto.OfferDto;
 import com.interventure.tender.service.exception.BusinessException;
 import com.interventure.tender.service.exception.EntityNotFoundException;
 import com.interventure.tender.service.exception.WrongStatusException;
+import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,21 +22,29 @@ import java.util.Optional;
 public class OfferServiceImpl implements OfferService {
     private OfferRepository offerRepository;
     private TenderRepository tenderRepository;
+    private BidderRepository bidderRepository;
     private OfferSearchService offerSearchService;
+    private DozerBeanMapper dozerBeanMapper;
 
-    public OfferServiceImpl(OfferRepository offerRepository, TenderRepository tenderRepository, OfferSearchService offerSearchService) {
+    public OfferServiceImpl(OfferRepository offerRepository, TenderRepository tenderRepository, BidderRepository bidderRepository, OfferSearchService offerSearchService, DozerBeanMapper dozerBeanMapper) {
         this.offerRepository = offerRepository;
         this.tenderRepository = tenderRepository;
+        this.bidderRepository = bidderRepository;
         this.offerSearchService = offerSearchService;
+        this.dozerBeanMapper = dozerBeanMapper;
     }
 
     @Override
-    public Offer addOffer(OfferCreationModel offerCreationModel) {
+    public OfferDto addOffer(OfferCreationModel offerCreationModel) {
         Tender tender = tenderRepository.getOne(offerCreationModel.getTenderId());
+        ApplicationUser bidder = bidderRepository.findById(offerCreationModel.getBidderId()).orElse(null);
         Offer entity = new Offer();
         entity.setTender(tender);
         entity.setStatus(OfferStatus.ACTIVE);
-        return offerRepository.save(entity);
+        entity.setCreatedBy(bidder);
+        entity.setAmount(offerCreationModel.getAmount());
+        entity.setCurrency(offerCreationModel.getCurrency());
+        return dozerBeanMapper.map(offerRepository.save(entity), OfferDto.class);
     }
 
     @Override

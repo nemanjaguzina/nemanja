@@ -4,9 +4,9 @@ insert into tender (id, tender_name, fk_user_created)
 values (1, 'TestTender', 1);
 insert into tender (id, tender_name, fk_user_created)
 values (2, 'TestTender1', 1);
-insert into offer (id, status, fk_tender, fk_user_created)
-values (1, 0, 2, 1);
-insert into offer (id, status, fk_tender, fk_user_created)
-values (2, 0, 2, 1);
-insert into offer (id, status, fk_tender, fk_user_created)
-values (3, 0, 2, 1);
+insert into offer (id, status, amount, currency, fk_tender, fk_user_created)
+values (1, 0, 1.4, 'EUR', 2, 1);
+insert into offer (id, status, amount, currency, fk_tender, fk_user_created)
+values (2, 0, 1.4, 'EUR', 2, 1);
+insert into offer (id, status, amount, currency, fk_tender, fk_user_created)
+values (3, 0, 1.4, 'EUR', 2, 1);
