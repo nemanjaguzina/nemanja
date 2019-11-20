@@ -1,17 +1,21 @@
 package com.interventure.tender.service.impl;
 
 import com.interventure.tender.entity.Tender;
+import com.interventure.tender.service.OfferService;
 import com.interventure.tender.service.TenderCreationModel;
 import com.interventure.tender.service.TenderCreationService;
 import com.interventure.tender.service.TenderService;
 import com.interventure.tender.service.dto.TenderDto;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class TenderServiceImpl implements TenderService {
+    public static final Logger LOGGER = LoggerFactory.getLogger(OfferService.class);
     private TenderSearchService tenderSearchService;
     private TenderCreationService tenderCreationService;
     private DozerBeanMapper dozerBeanMapper;

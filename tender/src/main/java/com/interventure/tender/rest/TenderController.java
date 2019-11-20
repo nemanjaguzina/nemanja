@@ -3,10 +3,7 @@ package com.interventure.tender.rest;
 import com.interventure.tender.service.TenderCreationModel;
 import com.interventure.tender.service.TenderService;
 import com.interventure.tender.service.dto.TenderDto;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class TenderController {
     }
 
     @RequestMapping(value = "/{userId}/new", method = RequestMethod.POST)
-    public TenderDto submitNewTender(@PathVariable("userId") Long userId, TenderCreationModel tenderDto) {
+    public TenderDto submitNewTender(@PathVariable("userId") Long userId, @RequestBody TenderCreationModel tenderDto) {
         return tenderService.createTender(tenderDto);
     }
 }

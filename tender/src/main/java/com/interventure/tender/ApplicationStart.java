@@ -21,6 +21,7 @@ public class ApplicationStart extends SpringBootServletInitializer {
     public static void main(String[] args) {
         System.out.println("Starting Tender application...");
         SpringApplication.run(ApplicationStart.class, args);
+        System.out.println("Tender application started");
     }
 
 }

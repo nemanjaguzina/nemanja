@@ -14,16 +14,13 @@ import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class CreateTenderTest {
+public class ListTenderTest {
     @Autowired
     private TenderService tenderService;
 
     @Test
-    public void createTenderTest() {
-        TenderCreationModel creationModel = new TenderCreationModel();
-        creationModel.setTenderName("Nemanja");
-        TenderDto tender = tenderService.createTender(creationModel);
-        Assert.assertNotNull(tender);
+    public void listTenderTest() {
+        List<TenderDto> tenders = tenderService.getUserTenders(1L);
+        Assert.assertEquals(tenders.size(), 2);
     }
-
 }

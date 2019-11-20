@@ -11,6 +11,8 @@ import com.interventure.tender.service.exception.BusinessException;
 import com.interventure.tender.service.exception.EntityNotFoundException;
 import com.interventure.tender.service.exception.WrongStatusException;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,6 +22,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class OfferServiceImpl implements OfferService {
+    public static final Logger LOGGER = LoggerFactory.getLogger(OfferService.class);
     private OfferRepository offerRepository;
     private TenderRepository tenderRepository;
     private BidderRepository bidderRepository;

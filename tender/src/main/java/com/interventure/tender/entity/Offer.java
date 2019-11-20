@@ -1,5 +1,7 @@
 package com.interventure.tender.entity;
 
+import com.interventure.tender.crudbase.BaseJournalEntity;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 

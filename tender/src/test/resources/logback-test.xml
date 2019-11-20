@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%5p][%C{0} : %M] %m [%d{yyyy-MM-dd HH:mm:ss z}]%n</pattern>
+            <immediateFlush>true</immediateFlush>
+        </encoder>
+    </appender>
+    <logger name="com.interventure" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="console" />
+    </logger>
+    <logger name="com" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="console" />
+    </logger>
+    <!-- default logging -->
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="console" />
+    </root>
+</configuration>

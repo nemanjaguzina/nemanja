@@ -1,9 +1,7 @@
-package com.interventure.tender.entity;
+package com.interventure.tender.crudbase;
 
-import com.interventure.tender.crudbase.BaseEntity;
-import org.springframework.data.annotation.CreatedBy;
+import com.interventure.tender.entity.ApplicationUser;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;

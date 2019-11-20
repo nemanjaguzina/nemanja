@@ -1,5 +1,7 @@
 package com.interventure.tender.entity;
 
+import com.interventure.tender.crudbase.BaseJournalEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

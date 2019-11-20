@@ -1,5 +1,7 @@
 package com.interventure.tender.entity;
 
+import com.interventure.tender.crudbase.BaseJournalEntity;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +13,17 @@ public class Tender extends BaseJournalEntity {
 
     @OneToMany(mappedBy = "tender", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Offer> offers;
+
+    @Column(name = "description", columnDefinition="TEXT")
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public List<Offer> getOffers() {
         return offers;

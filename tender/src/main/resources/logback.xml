@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%5p][%C{0} : %M] %m [%d{yyyy-MM-dd HH:mm:ss z}]%n</pattern>
+            <immediateFlush>true</immediateFlush>
+        </encoder>
+    </appender>
+    <appender name="MainTraceFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/trace.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>logs/trace.log.%i</FileNamePattern>
+            <!-- At most 10 files supported -->
+            <minIndex>1</minIndex>
+            <maxIndex>9</maxIndex>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%5p][%C{0} : %M] %m [%d{yyyy-MM-dd HH:mm:ss z}][%t]%n</pattern>
+            <immediateFlush>true</immediateFlush>
+        </encoder>
+    </appender>
+    <logger name="com.interventure" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="MainTraceFile" />
+    </logger>
+    <!-- default logging -->
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="console" />
+    </root>
+</configuration>
