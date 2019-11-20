@@ -39,14 +39,14 @@ API declaration
 Test app that simulates submitting and acceptiong offerings for a tender. 
 Following endpoints are available : 
 
-1) add Tender 
-
+1) list Tender 
+endpoint: "/tender/{userId}" GET
 ```java
 @RequestMapping("/{userId}")
     public List<OfferDto> getAllUserOffers(@PathVariable("userId") Long userId)
 ```
 2) add offer 
-
+endpoint: "offer/{tenderId}/{userId}/new" POST
 ```java
 public OfferDto submitOffer(@PathVariable("tenderId") Long tenderId, @PathVariable("userId") Long userId, @RequestBody OfferDto offerDto)
 ```
@@ -62,24 +62,26 @@ example of body :
 
 
 3) get all offers from one bidder
-
+endpoint : offer/{userId"} GET
 ```java
 public List<OfferDto> getAllUserTenderOffers(@PathVariable("tenderId") Long tenderId, @PathVariable("userId") Long userId)
 ```
 
 4) get all offers from one bidder on one tender 
-
+endpont : offer/{tenderId}/{userId} GET
 ```java
 public List<OfferDto> getAllUserTenderOffers(@PathVariable("tenderId") Long tenderId, @PathVariable("userId") Long userId)
 ```
 
 5) submit a new tender 
+ednpoint : /tender/{tenderId}/{userId}/new POST
 
 ```java
 public TenderDto submitNewTender(@PathVariable("userId") Long userId, TenderCreationModel tenderDto)
 ```
 
 6) list all user tenders
+tender/{userId} GET
 ```java
 public List<TenderDto> getAllUserOffers(@PathVariable("userId") Long userId) 
 ```
